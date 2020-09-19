@@ -66,3 +66,23 @@ as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
 ```
 
 Answer - We can see that factor vector simply multiplied by a numeric value does not yield a numeric result. (This is correct). However, when we change the type to numeric we get a numeric result that may not be correct. 
+
+# Problem 2 
+
+```{r dataset_penguins}
+data("penguins", package = "palmerpenguins")
+```
+
+The penguins dataset has the the following variable names - `r names(penguins)`. The species are `r levels(penguins$species)` and the islands are namely `r levels(penguins$island)`. The average bill length is `r mean(penguins$bill_length_mm, na.rm = TRUE)` and bill depth is `r mean(penguins$bill_depth_mm, na.rm = TRUE)`. The average body mass is `r mean(penguins$body_mass_g, na.rm = TRUE)`. The dataset has `r ncol(penguins)` variables and `r nrow(penguins)` observations. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`. 
+
+## Scatterplot flipper length vs bill length. 
+
+```{r}
+penguin_length_plot = ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  xlab("Bill Length (mm)") + ylab("Flipper Length (mm)")
+  penguin_length_plot
+
+ggsave("penguin_length_plot.pdf")
+```
+
