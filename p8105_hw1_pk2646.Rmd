@@ -1,0 +1,55 @@
+---
+title: "Homework 1"
+author: Pallavi Krishnamurthy
+output: html_document
+---
+
+This is my solution to Homework 1 
+
+```{r lib_calls}
+library(tidyverse)
+```
+
+# problem 1 
+
+## Part 1 :
+
+Create a data frame with specified elements 
+-a random sample of size 10 from a standard Normal distribution
+-a logical vector indicating whether elements of the sample are greater than 0
+-a character vector of length 10
+-a factor vector of length 10, with 3 different factor “levels”
+
+```{r dataframe}
+prob1_df =
+tibble(
+  samp = rnorm(10),
+  samp_gt_0 = samp > 0, 
+  char_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+  factor_vec = factor(c("low","low", "low", "mod", "mod", "mod", "high", "high", "high", "high"))
+)
+```
+
+Take the mean of each variable in the data frame prob1_df.
+
+```{r dataset_mean}
+mean(pull(prob1_df, samp)) 
+mean(pull(prob1_df, samp_gt_0))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, factor_vec))
+```
+
+Answer - The mean of a random sample of size 10 from a standard Normal distribution and the logical vector greater than zero gives a numeric result that is correct. However, the mean of the character vector and factor vector does not give a numeric results because it does not make sense to take the mean of "a", "b", "c", ... or "low", "mod" and "high". Hence, R gives a warning message that the argument if not numeric or logical : returning NA (Not Applicable). 
+
+Explicitly convert variables from one type to another. Here we convert variables to numeric type. 
+
+```{r covert_type_1, warning=FALSE, results='hide'}
+as.numeric(pull(prob1_df, samp)) 
+as.numeric(pull(prob1_df, samp_gt_0)) 
+as.numeric(pull(prob1_df, char_vec)) 
+as.numeric(pull(prob1_df, factor_vec)) 
+```
+
+Answer - The results for character vector is still not applicable. This is correct. The results for factor variable
+now yields a numeric value. This is because R forces the factor vector to take a numeric value when we explicitly change the variable type to numeric. We have to be cautious while changing types to make sure the results make sense. 
+
