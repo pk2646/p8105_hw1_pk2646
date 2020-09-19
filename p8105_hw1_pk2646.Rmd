@@ -53,3 +53,16 @@ as.numeric(pull(prob1_df, factor_vec))
 Answer - The results for character vector is still not applicable. This is correct. The results for factor variable
 now yields a numeric value. This is because R forces the factor vector to take a numeric value when we explicitly change the variable type to numeric. We have to be cautious while changing types to make sure the results make sense. 
 
+## Part2:
+
+convert the logical vector to numeric, and multiply the random sample by the result
+convert the logical vector to a factor, and multiply the random sample by the result
+convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
+
+```{r covert_type_2}
+as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
+```
+
+Answer - We can see that factor vector simply multiplied by a numeric value does not yield a numeric result. (This is correct). However, when we change the type to numeric we get a numeric result that may not be correct. 

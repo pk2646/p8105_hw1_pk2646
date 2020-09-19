@@ -392,7 +392,7 @@ tibble(
 )</code></pre>
 <p>Take the mean of each variable in the data frame prob1_df.</p>
 <pre class="r"><code>mean(pull(prob1_df, samp)) </code></pre>
-<pre><code>## [1] 0.3706526</code></pre>
+<pre><code>## [1] 0.5012674</code></pre>
 <pre class="r"><code>mean(pull(prob1_df, samp_gt_0))</code></pre>
 <pre><code>## [1] 0.6</code></pre>
 <pre class="r"><code>mean(pull(prob1_df, char_vec))</code></pre>
@@ -410,6 +410,21 @@ as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, char_vec)) 
 as.numeric(pull(prob1_df, factor_vec)) </code></pre>
 <p>Answer - The results for character vector is still not applicable. This is correct. The results for factor variable now yields a numeric value. This is because R forces the factor vector to take a numeric value when we explicitly change the variable type to numeric. We have to be cautious while changing types to make sure the results make sense.</p>
+</div>
+<div id="part2" class="section level2">
+<h2>Part2:</h2>
+<p>convert the logical vector to numeric, and multiply the random sample by the result convert the logical vector to a factor, and multiply the random sample by the result convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result</p>
+<pre class="r"><code>as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)</code></pre>
+<pre><code>##  [1] 0.0000000 0.0000000 0.0000000 0.2395652 1.9573385 0.3446862 0.0000000
+##  [8] 1.4645100 0.8328260 1.2214971</code></pre>
+<pre class="r"><code>as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)</code></pre>
+<pre><code>## Warning in Ops.factor(as.factor(pull(prob1_df, samp_gt_0)), pull(prob1_df, : &#39;*&#39;
+## not meaningful for factors</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
+<pre class="r"><code>as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)</code></pre>
+<pre><code>##  [1] -0.36988707 -0.05829481 -0.46462602  0.47913038  3.91467704  0.68937243
+##  [7] -0.15494087  2.92901991  1.66565196  2.44299424</code></pre>
+<p>Answer - We can see that factor vector simply multiplied by a numeric value does not yield a numeric result. (This is correct). However, when we change the type to numeric we get a numeric result that may not be correct.</p>
 </div>
 </div>
 
