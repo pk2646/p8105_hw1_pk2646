@@ -4,7 +4,7 @@ author: Pallavi Krishnamurthy
 output: html_document
 ---
 
-This is my solution to Homework 1 
+This is my solution to Homework one.
 
 ```{r lib_calls}
 library(tidyverse)
@@ -50,8 +50,7 @@ as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec)) 
 ```
 
-Answer - The results for character vector is still not applicable. This is correct. The results for factor variable
-now yields a numeric value. This is because R forces the factor vector to take a numeric value when we explicitly change the variable type to numeric. We have to be cautious while changing types to make sure the results make sense. 
+Answer - The results for character vector is still not applicable. This is correct. The results for factor variable now yields a numeric value. This is because R forces the factor vector to take a numeric value when we explicitly change the variable type to numeric. We have to be cautious while changing types to make sure the results make sense. 
 
 ## Part2:
 
@@ -73,11 +72,11 @@ Answer - We can see that factor vector simply multiplied by a numeric value does
 data("penguins", package = "palmerpenguins")
 ```
 
-The penguins dataset has the the following variable names - `r names(penguins)`. The species are `r levels(penguins$species)` and the islands are namely `r levels(penguins$island)`. The average bill length is `r mean(penguins$bill_length_mm, na.rm = TRUE)` and bill depth is `r mean(penguins$bill_depth_mm, na.rm = TRUE)`. The average body mass is `r mean(penguins$body_mass_g, na.rm = TRUE)`. The dataset has `r ncol(penguins)` variables and `r nrow(penguins)` observations. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`. 
+The penguins dataset has the the following variable names - `r names(penguins)`. The species are `r levels(penguins$species)` with `r count(filter(penguins, species == 'Adelie'))`, `r count(filter(penguins, species == 'Chinstrap'))` and `r count(filter(penguins, species == 'Gentoo'))` number of penguins for each species, respectively, and the islands are namely `r levels(penguins$island)` with `r count(filter(penguins, island == 'Biscoe'))`, `r count(filter(penguins, island == 'Dream'))` and `r count(filter(penguins, island == 'Torgersen'))` number of penguins for each island, respectively. The average bill length is `r mean(penguins$bill_length_mm, na.rm = TRUE)` and bill depth is `r mean(penguins$bill_depth_mm, na.rm = TRUE)`. The average body mass is `r mean(penguins$body_mass_g, na.rm = TRUE)`. The dataset has `r ncol(penguins)` variables and `r nrow(penguins)` observations. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)`. 
 
 ## Scatterplot flipper length vs bill length. 
 
-```{r}
+```{r scatterplot}
 penguin_length_plot = ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point() +
   xlab("Bill Length (mm)") + ylab("Flipper Length (mm)")

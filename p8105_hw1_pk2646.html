@@ -368,7 +368,7 @@ summary {
 </div>
 
 
-<p>This is my solution to Homework 1</p>
+<p>This is my solution to Homework one.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
@@ -392,9 +392,9 @@ tibble(
 )</code></pre>
 <p>Take the mean of each variable in the data frame prob1_df.</p>
 <pre class="r"><code>mean(pull(prob1_df, samp)) </code></pre>
-<pre><code>## [1] 0.1398246</code></pre>
+<pre><code>## [1] 0.05779623</code></pre>
 <pre class="r"><code>mean(pull(prob1_df, samp_gt_0))</code></pre>
-<pre><code>## [1] 0.6</code></pre>
+<pre><code>## [1] 0.4</code></pre>
 <pre class="r"><code>mean(pull(prob1_df, char_vec))</code></pre>
 <pre><code>## Warning in mean.default(pull(prob1_df, char_vec)): argument is not numeric or
 ## logical: returning NA</code></pre>
@@ -415,22 +415,22 @@ as.numeric(pull(prob1_df, factor_vec)) </code></pre>
 <h2>Part2:</h2>
 <p>convert the logical vector to numeric, and multiply the random sample by the result convert the logical vector to a factor, and multiply the random sample by the result convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result</p>
 <pre class="r"><code>as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)</code></pre>
-<pre><code>##  [1] 0.6265089 1.1889082 0.0000000 0.6927145 0.0000000 0.0000000 0.8699124
-##  [8] 1.7085071 0.0000000 0.6713519</code></pre>
+<pre><code>##  [1] 1.3910196 0.5361937 0.0000000 1.9279958 0.0000000 0.0000000 0.4054380
+##  [8] 0.0000000 0.0000000 0.0000000</code></pre>
 <pre class="r"><code>as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)</code></pre>
 <pre><code>## Warning in Ops.factor(as.factor(pull(prob1_df, samp_gt_0)), pull(prob1_df, : &#39;*&#39;
 ## not meaningful for factors</code></pre>
 <pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
 <pre class="r"><code>as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)</code></pre>
-<pre><code>##  [1]  1.2530178  2.3778165 -1.2995854  1.3854290 -0.2724919 -1.7873983
-##  [7]  1.7398247  3.4170141 -1.0001810  1.3427038</code></pre>
+<pre><code>##  [1]  2.7820393  1.0723873 -0.7475004  3.8559916 -1.1920066 -0.6621143
+##  [7]  0.8108761 -0.3132591 -0.2818014 -0.4860029</code></pre>
 <p>Answer - We can see that factor vector simply multiplied by a numeric value does not yield a numeric result. (This is correct). However, when we change the type to numeric we get a numeric result that may not be correct.</p>
 </div>
 </div>
 <div id="problem-2" class="section level1">
 <h1>Problem 2</h1>
 <pre class="r"><code>data(&quot;penguins&quot;, package = &quot;palmerpenguins&quot;)</code></pre>
-<p>The penguins dataset has the the following variable names - species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year. The species are Adelie, Chinstrap, Gentoo and the islands are namely Biscoe, Dream, Torgersen. The average bill length is 43.9219298 and bill depth is 17.1511696. The average body mass is 4201.754386. The dataset has 8 variables and 344 observations. The mean flipper length is 200.9152047.</p>
+<p>The penguins dataset has the the following variable names - species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year. The species are Adelie, Chinstrap, Gentoo with 152, 68 and 124 number of penguins for each species, respectively, and the islands are namely Biscoe, Dream, Torgersen with 168, 124 and 52 number of penguins for each island, respectively. The average bill length is 43.9219298 and bill depth is 17.1511696. The average body mass is 4201.754386. The dataset has 8 variables and 344 observations. The mean flipper length is 200.9152047.</p>
 <div id="scatterplot-flipper-length-vs-bill-length." class="section level2">
 <h2>Scatterplot flipper length vs bill length.</h2>
 <pre class="r"><code>penguin_length_plot = ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
